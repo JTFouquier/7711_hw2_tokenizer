@@ -34,30 +34,26 @@ following token "ולאחי" (VeLeAhi) that includes 4 words "And to my brother"
 import re
 from collections import Counter
 
-# TODO Get text information from Harrison
-with open('11532192.txt', 'r') as fin:
-    my_text = fin.read()
-
-# re to remove special chars and punctuation
-my_text = re.sub(r'[^\w]', ' ', my_text)
-
-token_count = len(my_text.split())
-print('Token count:\n', token_count)
-
-text_histogram = Counter(my_text.split())
-print('\nType/text histogram:\n', text_histogram)
-
-type_count = len(text_histogram)
-print('\nType count:\n', type_count)
-
-
-import re
+# # TODO Get text information from Harrison
+# with open('11532192.txt', 'r') as fin:
+#     my_text = fin.read()
+#
+# # re to remove special chars and punctuation
+# my_text = re.sub(r'[^\w]', ' ', my_text)
+#
+# token_count = len(my_text.split())
+# print('Token count:\n', token_count)
+#
+# text_histogram = Counter(my_text.split())
+# print('\nType/text histogram:\n', text_histogram)
+#
+# type_count = len(text_histogram)
+# print('\nType count:\n', type_count)
 
 ### Attempt two
 
 with open('11532192.txt', 'r') as fin:
     my_text = fin.read()
-
 
 new_text = re.sub('\n', '.', my_text)
 new_text = my_text.split()
@@ -102,22 +98,24 @@ for i in new_text:
     i = i.strip()
 
     if len(i) == 0:
+        cleaned_text_list.append(i.lower())
         continue
 
     if len(i) == 1:
         cleaned_text_list.append(i.lower())
         continue
 
+    # These are the most odd looking tokens
+    # print(i)
     cleaned_text_list.append(i.lower())
     count_incomplete += 1
 
 print(count_complete)
-print(count_incomplete)
+print("Odd looking tokens (weird chars, outliers):", count_incomplete)
 
-
-print(len(cleaned_text_list))
-print(cleaned_text_list)
+print("Token total:", len(cleaned_text_list))
+# print(cleaned_text_list)
 
 c = Counter(cleaned_text_list)
-print(c)
-print(len(c))
+# print(c)
+print("Type total:", len(c))
