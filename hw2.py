@@ -106,7 +106,7 @@ for i in new_text:
         continue
 
     # These are the most odd looking tokens
-    # print(i)
+    print(i)
     cleaned_text_list.append(i.lower())
     count_incomplete += 1
 
